@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MVCCoreApp
@@ -26,16 +28,48 @@ namespace MVCCoreApp
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
+            //app.UseMvcWithDefaultRoute();
 
-            app.UseMvcWithDefaultRoute();
-            //app.UseMvc(routers =>
-            //{
-            //    routers.MapRoute("default", "{controller=Home},{action=Index},{Id?}");
-            //});
+            app.UseMvc(routes =>
+            {
+                //Routes
+                //routes.MapRoute("default", "{admin}/{controller=Home}/{action=Index}");
+                //routes.MapRoute("default", "{controller=Home}/{action=Index}/{Id?}");
+                //routes.MapRoute("default", "{controller=Home}/{action=Index}");
+
+                //Route Constraints
+                //routes.MapRoute("default", "{controller=Home}/{action=Index}/{Id:int?}");
+                routes.MapRoute("default", "{controller}/{action}/{id?}",
+                     new { controller = "Home", action = "Index" },
+                     new { id = new IntRouteConstraint() });
+
+                routes.MapRoute("postbyid",
+                            "post/{id:int}",
+                            new { controller = "RouteConstraints", action = "PostById" },
+                                constraints: new
+                                {
+                                    id = new CompositeRouteConstraint(
+                                            new IRouteConstraint[]
+                                            {
+                                                new AlphaRouteConstraint(),
+                                                new MinLengthRouteConstraint(6)
+                                            })
+                                });
+
+                routes.MapRoute("postbyname",
+                        "post/{id:alpha:minlength(3)?}",
+                        new { controller = "RouteConstraints", action = "PostByName" });
+                //new { id = new AlphaRouteConstraint() });
+
+                routes.MapRoute("getyear",
+                           "year/{year:regex(^\\d{{4}}$)}",
+                           new { controller = "RouteConstraints", action = "GetYear" });
+            });
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello World!");
+            });
         }
     }
 }
