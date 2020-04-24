@@ -1,0 +1,36 @@
+﻿@model MVCCoreForm.Models.UserModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <form asp-controller="User" asp-action="Login">
+        @*<div asp-validation-summary="All"></div>*@
+
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" />
+        <span asp-validation-for="UserName"></span>
+
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        @*<span asp-validation-for="Password" class="text-danger"></span>*@
+
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        @*<span asp-validation-for="Email" class="text-danger"></span>*@
+
+        <label asp-for="CreateDate"></label>
+        <input asp-for="CreateDate" />
+        @*<span asp-validation-for="CreateDate" class="text-danger"></span>*@
+
+        <input type="submit" value="Login" />
+    </form>
+</body>
+</html>

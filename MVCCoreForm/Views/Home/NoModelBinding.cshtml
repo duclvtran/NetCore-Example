@@ -1,0 +1,30 @@
+﻿@model MVCCoreForm.Models.ProductEditModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NoModelBinding</title>
+</head>
+<body>
+    <form asp-controller="Home" asp-action="NoModelBinding">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+
+        <label asp-for="Rate"></label>
+        <input asp-for="Rate" />
+
+        <label asp-for="Rating"></label>
+        <input asp-for="Rating" />
+
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+
+        <input type="submit" name="submit" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@model MVCCoreForm.Models.ProductEditModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+    @*<form action="/home/create" method="post">
+            <label for="@Model.Name">Name</label>
+            <input type="text" name="@Model.Name" />
+            <label for="@Model.Rate">Rate</label>
+            <input type="text" name="@Model.Rate" />
+            <label for="@Model.Rating">Rating</label>
+            <input type="text" name="@Model.Rating" />
+            <input type="submit" name="submit" />
+        </form>*@
+
+    <form asp-controller="Home" asp-action="Create">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+
+        <label asp-for="Rate"></label>
+        <input asp-for="Rate" />
+
+        <label asp-for="Rating"></label>
+        <input asp-for="Rating" />
+
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+
+        <input type="submit" name="submit" />
+    </form>
+</body>
+</html>
