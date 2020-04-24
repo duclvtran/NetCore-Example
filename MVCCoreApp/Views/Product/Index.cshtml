@@ -1,0 +1,44 @@
+﻿@model List<MVCCoreApp.Models.ProductModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Age</td>
+        </tr>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    @{
+                        if (item.Age > 23)
+                        {
+                            <td>
+
+                                @item.Age
+                            </td>
+                        }
+                        else
+                        {
+                            <td>Chua du tuoi</td>
+                        }
+                    }
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

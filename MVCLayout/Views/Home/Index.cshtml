@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var product = ViewData["Product"] as MVCLayout.Models.Home.IndexModel;
+}
+@section header{
+    <link href="~/css/Index.css" rel="stylesheet" />
+}
+@section footer{
+    <script src="~/js/index.js"></script>
+}
+<h1>Index</h1>
+@ViewData["Welcome"] <br />
+
+@ViewData["Message"]  <br />
+
+@product.Name <br />
+@ViewBag.Welcome1<br />
+@ViewBag.Message1<br />
+@ViewBag.product.Name

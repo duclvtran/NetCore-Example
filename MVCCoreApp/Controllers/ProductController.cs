@@ -11,7 +11,10 @@ namespace MVCCoreApp.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var list = new List<ProductModel>();
+            list.Add(new ProductModel() { Id = 1, Name = "Nguyen Van A", Age = 22 });
+            list.Add(new ProductModel() { Id = 2, Name = "Nguyen Van B", Age = 24 });
+            return View(list);
         }
 
         //domain/product/edit
