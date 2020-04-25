@@ -9,27 +9,42 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
     <form asp-controller="User" asp-action="Login">
-        @*<div asp-validation-summary="All"></div>*@
+        <div asp-validation-summary="All" class="text-danger"></div>
 
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" />
+        <br />
         <label asp-for="UserName"></label>
         <input asp-for="UserName" />
-        <span asp-validation-for="UserName"></span>
-
+        <br />
         <label asp-for="Password"></label>
         <input asp-for="Password" />
-        @*<span asp-validation-for="Password" class="text-danger"></span>*@
-
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" />
+        <br />
         <label asp-for="Email"></label>
         <input asp-for="Email" />
-        @*<span asp-validation-for="Email" class="text-danger"></span>*@
-
+        <br />
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <br />
+        <label asp-for="CreditCard"></label>
+        <input asp-for="CreditCard" />
+        <br />
         <label asp-for="CreateDate"></label>
         <input asp-for="CreateDate" />
-        @*<span asp-validation-for="CreateDate" class="text-danger"></span>*@
-
+        <br />
+        <label asp-for="Range"></label>
+        <input asp-for="Range" />
+        <br />
+        <label asp-for="Url"></label>
+        <input asp-for="Url" />
         <input type="submit" value="Login" />
     </form>
 </body>

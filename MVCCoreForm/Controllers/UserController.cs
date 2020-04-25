@@ -27,6 +27,11 @@ namespace MVCCoreForm.Controllers
             string message = string.Empty;
             if (ModelState.IsValid)
             {
+                if (model.UserName == "vutdl")
+                {
+                    ModelState.AddModelError("", "Account is disable");
+                    return View(model);
+                }
                 message = "Username = " + model.UserName + ", Password = " + model.Password + ", Email = " + model.Email;
             }
             else
